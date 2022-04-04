@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
             score = myData2.score;
             lvlScore = myData2.lvlScore;
             scoreText.text = $"SCORE {score}";
-            AddCoinOnLoad(myData2.lvlScore);
+            AddCoinOnLoad(myData2.score);
             
             for (int i = 0; i < myData2.coins.Length; i++)
             {
@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
             healthImage.fillAmount = myData3.health;
             score = myData3.score;
             scoreText.text = $"SCORE {score}";
+            AddCoinOnLoad(myData3.score);
         }
         
         if (SceneManager.GetActiveScene().name == Ids.LEVEL_1)
@@ -160,7 +161,7 @@ public class GameManager : MonoBehaviour
         
         myData.health = healthImage.fillAmount;
         myData.score = score;
-        
+
         string serializedData = JsonConvert.SerializeObject(myData);
         File.WriteAllText(Application.persistentDataPath + Path.PathSeparator + "playerData.json", serializedData);
     }
